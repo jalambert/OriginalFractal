@@ -1,6 +1,6 @@
 public void setup() {
   size(512, 512);
-  frameRate(20);
+  frameRate(5);
 }
 public void draw() {
   squares(256);

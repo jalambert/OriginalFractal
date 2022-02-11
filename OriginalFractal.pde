@@ -1,11 +1,10 @@
 public void setup() {
   size(512, 512);
-  frameRate(5);
 }
 public void draw() {
   squares(256);
   fractal(256, 256, 256);
-  //noLoop();
+  noLoop();
 }
 
 public void squares(int wid){

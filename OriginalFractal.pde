@@ -2,26 +2,60 @@ public void setup() {
   size(512, 512);
 }
 public void draw() {
+  //int wid = 256;
+  /*for (int i = 0; i < wid; i++) {
+    noFill();
+    stroke((int)(Math.random()*256));
+    rect(0+i, 0+i, 256-(2*i), 256-(2*i));
+    rect(256+i, 0+i, 256-(2*i), 256-(2*i));
+    rect(0+i, 256+i, 256-(2*i), 256-(2*i));
+    rect(256+i, 256+i, 256-(2*i), 256-(2*i));
+  }*/
+  squares(256);
   fractal(256, 256, 256);
-  //noLoop();
+  noLoop();
 }
-public void mouseDragged() {
+
+public void squares(int wid){
+  if(wid == 1){
+    noFill();
+    stroke((int)(Math.random()*128));
+    rect(0+wid, 0+wid, 256-(2*wid), 256-(2*wid));
+    rect(256+wid, 0+wid, 256-(2*wid), 256-(2*wid));
+    rect(0+wid, 256+wid, 256-(2*wid), 256-(2*wid));
+    rect(256+wid, 256+wid, 256-(2*wid), 256-(2*wid));
+  }else{
+    noFill();
+    stroke((int)(Math.random()*128));
+    rect(0+wid, 0+wid, 256-(2*wid), 256-(2*wid));
+    rect(256+wid, 0+wid, 256-(2*wid), 256-(2*wid));
+    rect(0+wid, 256+wid, 256-(2*wid), 256-(2*wid));
+    rect(256+wid, 256+wid, 256-(2*wid), 256-(2*wid));
+    squares(wid-1);
+  }
 }
+
 public void fractal(int x, int y, int len) {
   if (len <= 4) {
-    //fill((float)(Math.random()*255), (float)(Math.random()*255), (float)(Math.random()*255));
-    stroke((float)(Math.random()*255), (float)(Math.random()*255), (float)(Math.random()*255));
-    ellipse(x, y, len, len);
+    noFill();
+    for (int i = 0; i <= len; i++) {
+      stroke((float)(Math.random()*255), (float)(Math.random()*255), (float)(Math.random()*255));
+      ellipse(x, y, i, i);
+    }
   } else {
-    ellipse(x, y, len, len);
+    for (int i = 0; i <= len; i++) {
+      noFill();
+      stroke((float)(Math.random()*255), (float)(Math.random()*255), (float)(Math.random()*255));
+      ellipse(x, y, i, i);
+    }
+    fractal(x-(int)(len*sqrt(2))/2, y-(int)(len*sqrt(2))/2, len/4);
+    fractal(x+(int)(len*sqrt(2))/2, y-(int)(len*sqrt(2))/2, len/4);
+    fractal(x-(int)(len*sqrt(2))/2, y+(int)(len*sqrt(2))/2, len/4);
+    fractal(x+(int)(len*sqrt(2))/2, y+(int)(len*sqrt(2))/2, len/4);
+
     fractal(x, y-(len/2), len/4);
     fractal(x-(len/2), y, len/4);
     fractal(x, y+(len/2), len/4);
     fractal(x+(len/2), y, len/4);
-
-    fractal(x-(int)(len*sqrt(2))/2,y-(int)(len*sqrt(2))/2,len/4);
-    fractal(x+(int)(len*sqrt(2))/2,y-(int)(len*sqrt(2))/2,len/4);
-    fractal(x-(int)(len*sqrt(2))/2,y+(int)(len*sqrt(2))/2,len/4);
-    fractal(x+(int)(len*sqrt(2))/2,y+(int)(len*sqrt(2))/2,len/4);
   }
 }

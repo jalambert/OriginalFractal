@@ -1,19 +1,11 @@
 public void setup() {
   size(512, 512);
+  frameRate(20);
 }
 public void draw() {
-  //int wid = 256;
-  /*for (int i = 0; i < wid; i++) {
-    noFill();
-    stroke((int)(Math.random()*256));
-    rect(0+i, 0+i, 256-(2*i), 256-(2*i));
-    rect(256+i, 0+i, 256-(2*i), 256-(2*i));
-    rect(0+i, 256+i, 256-(2*i), 256-(2*i));
-    rect(256+i, 256+i, 256-(2*i), 256-(2*i));
-  }*/
   squares(256);
   fractal(256, 256, 256);
-  noLoop();
+  //noLoop();
 }
 
 public void squares(int wid){
